@@ -13,13 +13,17 @@ window.onload = () => {
   const render = data => {
     
     const xScale = d3.scaleLinear()
-      .domain([0, d3.max(data, d =>d.Dealer_Cost)]);
-      console.log(x)
+      .domain([0, d3.max(data, d =>d.Dealer_Cost)])
+      .range([0,width]);
+    
+    
+    
+  //  console.log(xScale.range());
     
     
     svg.selectAll('rect').data(data)
     .enter().append('rect')
-            .attr('width',300)
+            .attr('width',d => xScale(d.Dealer_Cost))
             .attr('height',300)
      
   };
