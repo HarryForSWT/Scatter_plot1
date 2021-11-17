@@ -12,6 +12,9 @@ window.onload = () => {
     console.log(a+b);
     
   }
+  d3.csv('cars.csv').then(data =>{
+    console.log(data);
+  })
   
   // Load the data set from the assets folder:
 
