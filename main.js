@@ -15,16 +15,18 @@ window.onload = () => {
     const xScale = d3.scaleLinear()
       .domain([0, d3.max(data, d =>d.Dealer_Cost)])
       .range([0,width]);
+    const yScale = d3.scaleBand()
+      .domain(data.map(d=>d.Name))
+      .range([0,height]);
     
     
-    
-  //  console.log(xScale.range());
+    //console.log(yScale.domain());
     
     
     svg.selectAll('rect').data(data)
     .enter().append('rect')
             .attr('width',d => xScale(d.Dealer_Cost))
-            .attr('height',300)
+            .attr('height',yScale.b
      
   };
   
