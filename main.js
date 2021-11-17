@@ -5,31 +5,42 @@ window.onload = () => {
   // YOUR CODE GOES HERE
   console.log("YOUR CODE GOES HERE");
   const svg = d3.select("svg");
-  svg.style('background-color','#311999');
+  //svg.style('background-color','#311999');
   const width = +svg.attr("width");
   const height = +svg.attr("height");
 
   const render = data => {
     const xValue = d => d.Dealer_Cost;
     const yValue = d => d.Name;
-    
-    
+    const margin = {top:20, right:20, bottom:20, left:200};
+    const innerWidth =width  - margin.left -margin.right;
+    const innerHeight = height -margin.top - margin.bottom;
     const xScale = d3
       .scaleLinear()
       .domain([0, d3.max(data, xValue)])
       .range([0, width]);
+    
+    
+    
     const yScale = d3
       .scaleBand()
       .domain(data.map(yValue))
       .range([0, height]);
-
+    const yAxis = d3.axisLeft(yScale);
+    
+    const g = svg.append('g')
+        .attr('tranform',`translate(${margin.left},${margin.top})`);
+    yAxis(g.append('g'));
+    
     svg.selectAll("rect")
       .data(data)
       .enter()
       .append("rect")
       .attr("y", d => yScale(yValue(d)))
       .attr("width", d => xScale(xValue(d)))
-      .attr("height", yScale.bandwidth());
+      .attr("height", yScale.bandwidth())
+      .attr("fill","blue")
+    ;
   };
 
   d3.csv("cars.csv").then(data => {
