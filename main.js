@@ -5,9 +5,22 @@ window.onload = () => {
 
   // YOUR CODE GOES HERE
   console.log("YOUR CODE GOES HERE");
- 
+  const svg =d3.select('svg');
+  //svg.style('background-color','red');
+  const width = +svg.attr('width');
+  const height = +svg.attr('height');
+  
   const render = data => {
     
+    const xScale = d3.scaleLinear()
+      .domain([0, d3.max(data, d =>d.Dealer_Cost)]);
+      console.log(x)
+    
+    
+    svg.selectAll('rect').data(data)
+    .enter().append('rect')
+            .attr('width',300)
+            .attr('height',300)
      
   };
   
@@ -28,7 +41,7 @@ window.onload = () => {
       d.Len = +d.Len;
       d.Width = +d.Width;
     })
-    console.log(data);
+    render(data);
   }) 
   
   // Load the data set from the assets folder:
