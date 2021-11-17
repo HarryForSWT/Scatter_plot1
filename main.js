@@ -11,7 +11,7 @@ window.onload = () => {
   const render = data => {
     const xValue = d => d.Dealer_Cost;
     const yValue = d => d.Name;
-    const margin = {top:480, right:100, bottom:100, left:100};
+    const margin = {top:5, right:20, bottom:20, left:100};
     const innerWidth =width  - margin.left -margin.right;
     const innerHeight = height -margin.top - margin.bottom;
     const xScale = d3
@@ -24,16 +24,19 @@ window.onload = () => {
     const yScale = d3
       .scaleBand()
       .domain(data.map(yValue))
-      .range([0, height]);
+      .range([0, height])
+      .padding(0.2);
   
     
     const g = svg.append('g')
         .attr('tranform',`translate(${margin.left},${margin.top})`);
     
     g.append('g').call(d3.axisLeft(yScale))
-    .attr('transform',`translate(${margin.left},0)`);
+    .attr('transform',`translate(${margin.left},0)`)
+    //.selectAll(' .domain').remove()
+    ;
     g.append('g').call(d3.axisBottom(xScale))
-        .attr('transform',`translate(${margin.left},${margin.top})`);
+        .attr('transform',`translate(${margin.left},${innerHeight})`);
     
     
     svg.selectAll("rect")
@@ -43,8 +46,8 @@ window.onload = () => {
       .attr("y", d => yScale(yValue(d)))
       .attr("width", d => xScale(xValue(d)))
       .attr("height", yScale.bandwidth())
-      .attr("fill","black")
-    ;
+      .attr("fill","blure")
+      .attr('transform',`translate(${margin.left},0)`) ;
   };
 
   d3.csv("cars.csv").then(data => {
