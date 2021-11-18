@@ -19,13 +19,13 @@ window.onload = () => {
     const xScale = d3
       .scaleLinear()
       .domain(d3.extent(data, xValue))
-      .range([0, width-200])
+      .range([0, 760])
      ;
     //x "Definitionsbereich" Dateneinstellen
     const yScale = d3
       .scaleLinear()
       .domain(d3.extent(data, yValue))
-      .range([0, height-150]);
+      .range([0, 350]);
     
     //Objekt "g" mit der generellen Translationseinstelleung
     const g = svg
@@ -33,15 +33,15 @@ window.onload = () => {
       .attr("tranform", `translate(${margin.left},${margin.top})`);
 
     const xAxis = d3.axisBottom(xScale)
-    .tickSize(-300);
+    .tickSize(-350);
     
     const yAxis = d3.axisLeft(yScale)
-      .tickSize(-innerWidth);
+      .tickSize(-760);
     
     //y-Achse Zeichnen
     g.append("g")
       .call(yAxis)
-      .attr("transform", `translate(${innerWidth-599},0)`);
+      .attr("transform", `translate(${innerWidth-696},0)`);
     //.selectAll(' .domain').remove()
     //yAchse verschwinden mit oberer Zeile
     
@@ -65,7 +65,7 @@ window.onload = () => {
       .attr("cy", d => yScale(yValue(d)))
       .attr("cx", d => xScale(xValue(d)))
       .attr("r",7)
-      .attr("transform", `translate(${innerWidth/2},0)`);
+      .attr("transform", `translate(${190},0)`);
   };
 
   
