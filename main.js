@@ -9,8 +9,10 @@ window.onload = () => {
   const width = +svg.attr("width");
   const height = +svg.attr("height");
   const render = data => {
-    const xValue = d => d.Dealer_Cost;
-    const yValue = d => d.Retail_Price
+    const xValue = d => d.Horsepower; 
+    const xAxisLabel = "Horsepower";
+    const yValue = d => d.Weight;
+    const yAxisLabel = "Weight";
     const margin = { top: 5, right: 20, bottom: 20, left: 200 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
@@ -54,7 +56,7 @@ window.onload = () => {
     .attr("class","axis-label")
     .attr("y",60)
     .attr("x",innerWidth/2)
-    .text("Dealer Cost");
+    .text(xAxisLabel);
 
     //Daten in Balken visualisieren
     svg
@@ -79,7 +81,6 @@ window.onload = () => {
       d.Engine_Size = +d.Engine_Size;
       d.City_Miles_Per_Gallon = +d.City_Miles_Per_Gallon;
       d.Cyl = +d.Cyl;
-      d.Horsepower = +d.Horsepower;
       d.Horsepower = +d.Horsepower;
       d.Highway_Miles_Per_Gallon = +d.Highway_Miles_Per_Gallon;
       d.Weight = +d.Weight;
