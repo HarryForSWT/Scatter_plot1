@@ -11,7 +11,7 @@ window.onload = () => {
   
   
   const render = data => {
-    const xValue = d => d.Horsepower;
+    const xValue = d => (d.Horsepower || d.Type=="Sedan");
     const xAxisLabel = "Horsepower";
     const yValue = d => d.Weight;
     const yAxisLabel = "Weight";
@@ -84,7 +84,10 @@ window.onload = () => {
       .text(xAxisLabel);
 
     //Daten in Formen visualisieren
-    
+    /*const nested = d3.nest()
+    .key(d=>d.Type)
+    .entries()
+    ;*/
     
     svg
       .selectAll("circle")
