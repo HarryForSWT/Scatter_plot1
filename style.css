@@ -6,13 +6,24 @@ rect{
 }
 
 text{
-  font-size: 1.5em;
+
   font-family: sans-serif;
   
 }
 
 .tick text{
-  fill:#635F5d;
+  font-size: 1.9em;
+  fill:#635F5D;
 }
+
+.tick line{
+  stroke: #c0c0bb
+}
+
+.axis-label {
+  font-size: 3em;
+  fill:#8E8883;
+}
+
 
 /* YOUR CSS CODE GOES HERE */

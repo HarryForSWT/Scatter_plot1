@@ -48,21 +48,20 @@ window.onload = () => {
       .attr("transform", `translate(${innerWidth/2},${innerHeight-108})`);
     
     xAxisG.append('text')
+    .attr("class","axis-label")
     .attr("y",+40)
     .attr("x",innerWidth/2)
-    .attr("fill","Black")
-    .attr("font-size","50")
     .text("Dealer Cost");
 
     //Daten in Balken visualisieren
     svg
-      .selectAll("rect")
+      .selectAll("circle")
       .data(data)
       .enter()
-      .append("rect")
-      .attr("y", d => yScale(yValue(d)))
-      .attr("width", d => xScale(xValue(d)))
-      .attr("height", yScale.bandwidth())
+      .append("circle")
+      .attr("cy", d => yScale(yValue(d)))
+      .attr("cx", d => xScale(xValue(d)))
+      .attr("r", yScale.bandwidth()/3)
       //.attr("fill", "transparent")
       .attr("transform", `translate(${innerWidth/2},30)`);
   };
