@@ -27,7 +27,7 @@ window.onload = () => {
     const yScale = d3
       .scaleLinear()
       .domain(d3.extent(data, yValue))
-      .range([0, 350])
+      .range([350, 0])
       .nice();
 
     //Objekt "g" mit der generellen Translationseinstelleung
@@ -35,9 +35,15 @@ window.onload = () => {
       .append("g")
       .attr("tranform", `translate(${margin.left},${margin.top})`);
 
-    const xAxis = d3.axisBottom(xScale).tickSize(-350).tickPadding(15);
+    const xAxis = d3
+      .axisBottom(xScale)
+      .tickSize(-350)
+      .tickPadding(15);
 
-    const yAxis = d3.axisLeft(yScale).tickSize(-760).tickPadding(15);
+    const yAxis = d3
+      .axisLeft(yScale)
+      .tickSize(-760)
+      .tickPadding(10);
 
     //y-Achse Zeichnen
     const yAxisG = g
@@ -51,12 +57,11 @@ window.onload = () => {
       .attr("y", -100)
       .attr("x", -100)
       .text(yAxisLabel)
-      .attr('text-anchor','middle')
-      .attr("transform",`rotate(-90)`);
-    
-    
+      .attr("text-anchor", "middle")
+      .attr("transform", `rotate(-90)`);
+    //yAchse verschwinden 
     yAxisG.selectAll(" .domain").remove();
-    //yAchse verschwinden mit oberer Zeile
+    
 
     //x-Achse Zeichnen
     const xAxisG = g
@@ -66,7 +71,9 @@ window.onload = () => {
         "transform",
         `translate(${innerWidth / 9 + 86},${innerHeight - 125})`
       );
-
+    
+     //xAchse verschwinden 
+    xAxisG.selectAll(" .domain").remove();
     xAxisG
       .append("text")
       .attr("class", "axis-label")
@@ -74,7 +81,7 @@ window.onload = () => {
       .attr("x", innerWidth / 2)
       .text(xAxisLabel);
 
-    //Daten in Balken visualisieren
+    //Daten in Formen visualisieren
     svg
       .selectAll("circle")
       .data(data)
@@ -100,8 +107,12 @@ window.onload = () => {
       d.Weight = +d.Weight;
       d.Wheel_Base = +d.Wheel_Base;
       d.Len = +d.Len;
+      d.AWD = +d.AWD;
       d.Width = +d.Width;
+      
+      console.
     });
     render(data);
+    
   });
 };
