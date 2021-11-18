@@ -9,7 +9,7 @@ window.onload = () => {
   const width = +svg.attr("width");
   const height = +svg.attr("height");
   const render = data => {
-    const xValue = d => d.Horsepower; 
+    const xValue = d => d.Horsepower;
     const xAxisLabel = "Horsepower";
     const yValue = d => d.Weight;
     const yAxisLabel = "Weight";
@@ -21,42 +21,52 @@ window.onload = () => {
     const xScale = d3
       .scaleLinear()
       .domain(d3.extent(data, xValue))
-      .range([0, 760])
-     ;
+      .range([0, 760]).nice();
     //x "Definitionsbereich" Dateneinstellen
     const yScale = d3
       .scaleLinear()
       .domain(d3.extent(data, yValue))
-      .range([0, 350]);
-    
+      .range([0, 350]).nice();
+
     //Objekt "g" mit der generellen Translationseinstelleung
     const g = svg
       .append("g")
       .attr("tranform", `translate(${margin.left},${margin.top})`);
 
-    const xAxis = d3.axisBottom(xScale)
-    .tickSize(-350);
-    
-    const yAxis = d3.axisLeft(yScale)
-      .tickSize(-760);
-    
+    const xAxis = d3.axisBottom(xScale).tickSize(-350);
+
+    const yAxis = d3.axisLeft(yScale).tickSize(-760);
+
     //y-Achse Zeichnen
-    g.append("g")
-      .call(yAxis)
-      .attr("transform", `translate(${innerWidth-696},0)`);
-    //.selectAll(' .domain').remove()
+    const yAxisG = g.append("g").call(yAxis)
+    .attr("transform", `translate(${innerWidth - 696},0)`);
+   
+    
+    yAxisG.append('text')
+      .attr("class", "axis-label")
+      .attr("y", 0)
+      .attr("x", 0)
+      .attr('fill','black')
+      .attr('transform',`rotate(-90)`)
+      .attr(yAxisLabel);
+ //yAxisG.selectAll(" .domain").remove();
     //yAchse verschwinden mit oberer Zeile
-    
+
     //x-Achse Zeichnen
-   const xAxisG = g.append("g")
+    const xAxisG = g
+      .append("g")
       .call(xAxis)
-      .attr("transform", `translate(${innerWidth/9+86},${innerHeight-125})`);
-    
-    xAxisG.append('text')
-    .attr("class","axis-label")
-    .attr("y",60)
-    .attr("x",innerWidth/2)
-    .text(xAxisLabel);
+      .attr(
+        "transform",
+        `translate(${innerWidth / 9 + 86},${innerHeight - 125})`
+      );
+
+    xAxisG
+      .append("text")
+      .attr("class", "axis-label")
+      .attr("y", 60)
+      .attr("x", innerWidth / 2)
+      .text(xAxisLabel);
 
     //Daten in Balken visualisieren
     svg
@@ -66,11 +76,9 @@ window.onload = () => {
       .append("circle")
       .attr("cy", d => yScale(yValue(d)))
       .attr("cx", d => xScale(xValue(d)))
-      .attr("r",7)
+      .attr("r", 7)
       .attr("transform", `translate(${190},0)`);
   };
-
-  
 
   // Load the data set from the assets folder:
   //Dateiverbinden
