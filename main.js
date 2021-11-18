@@ -32,21 +32,24 @@ window.onload = () => {
       .append("g")
       .attr("tranform", `translate(${margin.left},${margin.top})`);
 
+    const xAxis = d3.axisBottom(xScale)
+    .tickSize(-innerHeight);
+    
     //y-Achse Zeichnen
     g.append("g")
       .call(d3.axisLeft(yScale))
-      .attr("transform", `translate(${margin.left},30)`);
+      .attr("transform", `translate(${innerWidth/2},30)`);
     //.selectAll(' .domain').remove()
     //yAchse verschwinden mit oberer Zeile
     
     //x-Achse Zeichnen
    const xAxisG = g.append("g")
-      .call(d3.axisBottom(xScale))
-      .attr("transform", `translate(${margin.left},${innerHeight-108})`);
+      .call(xAxis)
+      .attr("transform", `translate(${innerWidth/2},${innerHeight-108})`);
     
     xAxisG.append('text')
     .attr("y",+40)
-    .attr("x",+300)
+    .attr("x",innerWidth/2)
     .attr("fill","Black")
     .attr("font-size","50")
     .text("Dealer Cost");
@@ -61,7 +64,7 @@ window.onload = () => {
       .attr("width", d => xScale(xValue(d)))
       .attr("height", yScale.bandwidth())
       //.attr("fill", "transparent")
-      .attr("transform", `translate(${margin.left},0)`);
+      .attr("transform", `translate(${innerWidth/2},30)`);
   };
 
   

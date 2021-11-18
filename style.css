@@ -6,11 +6,13 @@ rect{
 }
 
 text{
-  font-size: 1em;
+  font-size: 1.5em;
+  font-family: sans-serif;
+  
 }
 
-svg > text {
-  font-size: 2em;
-  color: red;
+.tick text{
+  fill:#635F5d;
 }
+
 /* YOUR CSS CODE GOES HERE */
