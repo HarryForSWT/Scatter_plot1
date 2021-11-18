@@ -84,10 +84,10 @@ window.onload = () => {
       .text(xAxisLabel);
 
     //Daten in Formen visualisieren
-    /*const nested = d3.nest()
+    const nested = d3.nest()
     .key(d=>d.Type)
-    .entries()
-    ;*/
+    .entries(data)
+    console.log(nested);
     
     svg
       .selectAll("circle")
