@@ -8,6 +8,8 @@ window.onload = () => {
   //svg.style('background-color','#311999');
   const width = +svg.attr("width");
   const height = +svg.attr("height");
+  
+  
   const render = data => {
     const xValue = d => d.Horsepower;
     const xAxisLabel = "Horsepower";
@@ -82,6 +84,8 @@ window.onload = () => {
       .text(xAxisLabel);
 
     //Daten in Formen visualisieren
+    
+    
     svg
       .selectAll("circle")
       .data(data)
@@ -109,8 +113,10 @@ window.onload = () => {
       d.Len = +d.Len;
       d.AWD = +d.AWD;
       d.Width = +d.Width;
+      if(d.Type=='Sedan'){
+        console.log(true);
+      }
       
-      console.
     });
     render(data);
     
