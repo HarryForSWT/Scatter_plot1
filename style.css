@@ -2,7 +2,8 @@ body {
     height: 100%;
 }
 circle{
-  fill: steelblue
+  fill: steelblue;
+  opacity:0.5;
 }
 
 text{
