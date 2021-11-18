@@ -11,7 +11,7 @@ window.onload = () => {
   const render = data => {
     const xValue = d => d.Dealer_Cost;
     const yValue = d => d.Name;
-    const margin = { top: 5, right: 20, bottom: 20, left: 100 };
+    const margin = { top: 5, right: 20, bottom: 20, left: 200 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -19,12 +19,12 @@ window.onload = () => {
     const xScale = d3
       .scaleLinear()
       .domain([0, d3.max(data, xValue)])
-      .range([0, width]);
+      .range([0, width*2/3]);
     //x "Definitionsbereich" Dateneinstellen
     const yScale = d3
       .scaleBand()
       .domain(data.map(yValue))
-      .range([0, height])
+      .range([0, height*2/3])
       .padding(0.2);
     
     //Objekt "g" mit der generellen Translationseinstelleung
@@ -35,14 +35,21 @@ window.onload = () => {
     //y-Achse Zeichnen
     g.append("g")
       .call(d3.axisLeft(yScale))
-      .attr("transform", `translate(${margin.left},0)`);
+      .attr("transform", `translate(${margin.left},30)`);
     //.selectAll(' .domain').remove()
     //yAchse verschwinden mit oberer Zeile
     
     //x-Achse Zeichnen
-    g.append("g")
+   const xAxisG = g.append("g")
       .call(d3.axisBottom(xScale))
-      .attr("transform", `translate(${margin.left},${innerHeight})`);
+      .attr("transform", `translate(${margin.left},${innerHeight-108})`);
+    
+    xAxisG.append('text')
+    .attr("y",+40)
+    .attr("x",+300)
+    .attr("fill","Black")
+    .attr("font-size","50")
+    .text("Dealer Cost");
 
     //Daten in Balken visualisieren
     svg
@@ -53,14 +60,14 @@ window.onload = () => {
       .attr("y", d => yScale(yValue(d)))
       .attr("width", d => xScale(xValue(d)))
       .attr("height", yScale.bandwidth())
-      .attr("fill", "blure")
+      //.attr("fill", "transparent")
       .attr("transform", `translate(${margin.left},0)`);
   };
 
   
 
   // Load the data set from the assets folder:
-  \//Dateiverbinden
+  //Dateiverbinden
   d3.csv("cars.csv").then(data => {
     data.forEach(d => {
       d.Retail_Price = +d.Retail_Price;

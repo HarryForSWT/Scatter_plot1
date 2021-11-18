@@ -8,4 +8,9 @@ rect{
 text{
   font-size: 1em;
 }
+
+svg > text {
+  font-size: 2em;
+  color: red;
+}
 /* YOUR CSS CODE GOES HERE */
