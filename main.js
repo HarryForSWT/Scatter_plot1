@@ -20,7 +20,7 @@ window.onload = () => {
       .scaleLinear()
       .domain(d3.extent(data, xValue))
       .range([0, width-200])
-      .nice();
+     ;
     //x "Definitionsbereich" Dateneinstellen
     const yScale = d3
       .scaleLinear()
@@ -33,7 +33,7 @@ window.onload = () => {
       .attr("tranform", `translate(${margin.left},${margin.top})`);
 
     const xAxis = d3.axisBottom(xScale)
-    .tickSize(-innerHeight);
+    .tickSize(-300);
     
     const yAxis = d3.axisLeft(yScale)
       .tickSize(-innerWidth);
@@ -41,18 +41,18 @@ window.onload = () => {
     //y-Achse Zeichnen
     g.append("g")
       .call(yAxis)
-      .attr("transform", `translate(${innerWidth-680},0)`);
+      .attr("transform", `translate(${innerWidth-599},0)`);
     //.selectAll(' .domain').remove()
     //yAchse verschwinden mit oberer Zeile
     
     //x-Achse Zeichnen
    const xAxisG = g.append("g")
       .call(xAxis)
-      .attr("transform", `translate(${innerWidth/9},${innerHeight})`);
+      .attr("transform", `translate(${innerWidth/9+86},${innerHeight-125})`);
     
     xAxisG.append('text')
     .attr("class","axis-label")
-    .attr("y",10)
+    .attr("y",60)
     .attr("x",innerWidth/2)
     .text("Dealer Cost");
 
