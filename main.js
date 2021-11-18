@@ -19,13 +19,13 @@ window.onload = () => {
     const xScale = d3
       .scaleLinear()
       .domain(d3.extent(data, xValue))
-      .range([0, innerWidth])
+      .range([0, width-200])
       .nice();
     //x "Definitionsbereich" Dateneinstellen
     const yScale = d3
       .scaleLinear()
       .domain(d3.extent(data, yValue))
-      .range([0, height*2/3]);
+      .range([0, height-150]);
     
     //Objekt "g" mit der generellen Translationseinstelleung
     const g = svg
@@ -41,18 +41,18 @@ window.onload = () => {
     //y-Achse Zeichnen
     g.append("g")
       .call(yAxis)
-      .attr("transform", `translate(${innerWidth/2},50)`);
+      .attr("transform", `translate(${innerWidth-680},0)`);
     //.selectAll(' .domain').remove()
     //yAchse verschwinden mit oberer Zeile
     
     //x-Achse Zeichnen
    const xAxisG = g.append("g")
       .call(xAxis)
-      .attr("transform", `translate(${innerWidth/2},${innerHeight-108})`);
+      .attr("transform", `translate(${innerWidth/9},${innerHeight})`);
     
     xAxisG.append('text')
     .attr("class","axis-label")
-    .attr("y",+40)
+    .attr("y",10)
     .attr("x",innerWidth/2)
     .text("Dealer Cost");
 
