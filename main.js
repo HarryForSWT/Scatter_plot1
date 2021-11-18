@@ -59,9 +59,9 @@ window.onload = () => {
       .data(data)
       .enter()
       .append("circle")
-      .attr("cy", d => yScale(yValue(d)))
+      .attr("cy", d => yScale(yValue(d))+yScale.bandwidth()/2)
       .attr("cx", d => xScale(xValue(d)))
-      .attr("r", yScale.bandwidth()/3)
+      .attr("r", yScale.bandwidth()/2)
       //.attr("fill", "transparent")
       .attr("transform", `translate(${innerWidth/2},30)`);
   };
