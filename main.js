@@ -11,45 +11,56 @@ window.onload = () => {
   const render = data => {
     const xValue = d => d.Dealer_Cost;
     const yValue = d => d.Name;
-    const margin = {top:5, right:20, bottom:20, left:100};
-    const innerWidth =width  - margin.left -margin.right;
-    const innerHeight = height -margin.top - margin.bottom;
+    const margin = { top: 5, right: 20, bottom: 20, left: 100 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+
+    //y "Wertebereich" dateneinstellen
     const xScale = d3
       .scaleLinear()
       .domain([0, d3.max(data, xValue)])
       .range([0, width]);
-    
-    
-    
+    //x "Definitionsbereich" Dateneinstellen
     const yScale = d3
       .scaleBand()
       .domain(data.map(yValue))
       .range([0, height])
       .padding(0.2);
-  
     
-    const g = svg.append('g')
-        .attr('tranform',`translate(${margin.left},${margin.top})`);
-    
-    g.append('g').call(d3.axisLeft(yScale))
-    .attr('transform',`translate(${margin.left},0)`)
+    //Objekt "g" mit der generellen Translationseinstelleung
+    const g = svg
+      .append("g")
+      .attr("tranform", `translate(${margin.left},${margin.top})`);
+
+    //y-Achse Zeichnen
+    g.append("g")
+      .call(d3.axisLeft(yScale))
+      .attr("transform", `translate(${margin.left},0)`);
     //.selectAll(' .domain').remove()
-    ;
-    g.append('g').call(d3.axisBottom(xScale))
-        .attr('transform',`translate(${margin.left},${innerHeight})`);
+    //yAchse verschwinden mit oberer Zeile
     
-    
-    svg.selectAll("rect")
+    //x-Achse Zeichnen
+    g.append("g")
+      .call(d3.axisBottom(xScale))
+      .attr("transform", `translate(${margin.left},${innerHeight})`);
+
+    //Daten in Balken visualisieren
+    svg
+      .selectAll("rect")
       .data(data)
       .enter()
       .append("rect")
       .attr("y", d => yScale(yValue(d)))
       .attr("width", d => xScale(xValue(d)))
       .attr("height", yScale.bandwidth())
-      .attr("fill","blure")
-      .attr('transform',`translate(${margin.left},0)`) ;
+      .attr("fill", "blure")
+      .attr("transform", `translate(${margin.left},0)`);
   };
 
+  
+
+  // Load the data set from the assets folder:
+  \//Dateiverbinden
   d3.csv("cars.csv").then(data => {
     data.forEach(d => {
       d.Retail_Price = +d.Retail_Price;
@@ -67,6 +78,4 @@ window.onload = () => {
     });
     render(data);
   });
-
-  // Load the data set from the assets folder:
 };
