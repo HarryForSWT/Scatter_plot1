@@ -19,13 +19,14 @@ window.onload = () => {
     const xScale = d3
       .scaleLinear()
       .domain([0, d3.max(data, xValue)])
-      .range([0, width*2/3]);
+      .range([0, width*2/3])
+      .nice();
     //x "Definitionsbereich" Dateneinstellen
     const yScale = d3
       .scaleBand()
       .domain(data.map(yValue))
       .range([0, height*2/3])
-      .padding(0.2);
+      .padding(0.3);
     
     //Objekt "g" mit der generellen Translationseinstelleung
     const g = svg
