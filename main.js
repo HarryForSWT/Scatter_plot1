@@ -21,35 +21,41 @@ window.onload = () => {
     const xScale = d3
       .scaleLinear()
       .domain(d3.extent(data, xValue))
-      .range([0, 760]).nice();
+      .range([0, 760])
+      .nice();
     //x "Definitionsbereich" Dateneinstellen
     const yScale = d3
       .scaleLinear()
       .domain(d3.extent(data, yValue))
-      .range([0, 350]).nice();
+      .range([0, 350])
+      .nice();
 
     //Objekt "g" mit der generellen Translationseinstelleung
     const g = svg
       .append("g")
       .attr("tranform", `translate(${margin.left},${margin.top})`);
 
-    const xAxis = d3.axisBottom(xScale).tickSize(-350);
+    const xAxis = d3.axisBottom(xScale).tickSize(-350).tickPadding(15);
 
-    const yAxis = d3.axisLeft(yScale).tickSize(-760);
+    const yAxis = d3.axisLeft(yScale).tickSize(-760).tickPadding(15);
 
     //y-Achse Zeichnen
-    const yAxisG = g.append("g").call(yAxis)
-    .attr("transform", `translate(${innerWidth - 696},0)`);
-   
-    
-    yAxisG.append('text')
+    const yAxisG = g
+      .append("g")
+      .call(yAxis)
+      .attr("transform", `translate(${innerWidth - 696},0)`);
+
+    yAxisG
+      .append("text")
       .attr("class", "axis-label")
-      .attr("y", 0)
-      .attr("x", 0)
-      .attr('fill','black')
-      .attr('transform',`rotate(-90)`)
-      .attr(yAxisLabel);
- //yAxisG.selectAll(" .domain").remove();
+      .attr("y", -100)
+      .attr("x", -100)
+      .text(yAxisLabel)
+      .attr('text-anchor','middle')
+      .attr("transform",`rotate(-90)`);
+    
+    
+    yAxisG.selectAll(" .domain").remove();
     //yAchse verschwinden mit oberer Zeile
 
     //x-Achse Zeichnen
