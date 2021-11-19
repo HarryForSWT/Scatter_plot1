@@ -97,17 +97,32 @@ window.onload = () => {
    // colorScale.domain(nested.map(d => d.key));
     
     svg
-      .selectAll("circle")
+    
+    /*
+     .selectAll("circle")
       .data(data)
       .enter()
       .append("circle")
-      //.attr('class','circle-color')
-      .attr("cy", d => yScale(yValue(d)))
+    
+    .attr("cy", d => yScale(yValue(d)))
       .attr("cx", d => xScale(xValue(d)))
       .attr("r", 7)
-      //.attr("stroke",d=>colorScale(d.key))
-      .attr("transform", `translate(${190},0)`);
+   
     
+   
+    */
+    
+    
+     
+     .selectAll("path")
+    .data(data)
+    .join("path")
+      .attr("fill", d => color(d.Type))
+      .attr("d", d => shape(d.Type))
+      //.attr('class','circle-color')
+      .attr("transform", d => `translate(${d => xScale(xValue(d))},${d => yScale(yValue(d))}`);
+      //.attr("stroke",d=>colorScale(d.key))
+      
       
   };
   

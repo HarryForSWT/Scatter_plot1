@@ -1,8 +1,8 @@
 body {
     height: 100%;
 }
-circle{
-  fill: steelblue;
+path{
+  /*fill: steelblue;*/
   opacity:0.5;
 }
 
