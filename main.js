@@ -91,9 +91,10 @@ window.onload = () => {
     
     svg
       .selectAll("circle")
-      .data(data)
+      .data(nested)//
       .enter()
       .append("circle")
+      .attr('class','circle-color')//
       .attr("cy", d => yScale(yValue(d)))
       .attr("cx", d => xScale(xValue(d)))
       .attr("r", 7)
