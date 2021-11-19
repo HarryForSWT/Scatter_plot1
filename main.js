@@ -33,8 +33,11 @@ window.onload = () => {
       .range([350, 0])
       .nice();
 
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    //const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
     //Objekt "g" mit der generellen Translationseinstelleung
+    
+    const color = d3.scaleOrdinal(data.map(d => d.Type), d3.schemeCategory10);
+    const shape = d3.scaleOrdinal(data.map(d => d.Type), d3.symbols.map(s => d3.symbol().type(s)()))
     const g = svg
       .append("g")
       .attr("tranform", `translate(${margin.left},${margin.top})`);
@@ -91,18 +94,18 @@ window.onload = () => {
     .entries(data)
     console.log(nested);
     
-    colorScale.domain(nested.map(d => d.key));
+   // colorScale.domain(nested.map(d => d.key));
     
     svg
       .selectAll("circle")
-      .data(nested)//
+      .data(data)
       .enter()
       .append("circle")
-      .attr('class','circle-color')//
+      //.attr('class','circle-color')
       .attr("cy", d => yScale(yValue(d)))
       .attr("cx", d => xScale(xValue(d)))
       .attr("r", 7)
-      .attr("stroke",d=>colorScale(d.key))
+      //.attr("stroke",d=>colorScale(d.key))
       .attr("transform", `translate(${190},0)`);
     
       
