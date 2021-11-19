@@ -37,7 +37,7 @@ window.onload = () => {
     //Objekt "g" mit der generellen Translationseinstelleung
     
     const color = d3.scaleOrdinal(data.map(d => d.Type), d3.schemeCategory10);
-    const shape = d3.scaleOrdinal(data.map(d => d.Type), d3.symbols.map(s => d3.symbol().type(s)()))
+    const shape = d3.scaleOrdinal(data.map(d => d.Type), d3.symbols.map(s => d3.symbol().type(s)()));
     const g = svg
       .append("g")
       .attr("tranform", `translate(${margin.left},${margin.top})`);
@@ -118,9 +118,9 @@ window.onload = () => {
     .data(data)
     .join("path")
       .attr("fill", d => color(d.Type))
-      .attr("d", d => shape(d.Type))
+      .attr("d", d => shape(d.AWD))
       //.attr('class','circle-color')
-      .attr("transform", d => `translate(${xScale(d.Horsepower)+200},${yScale(d.Weight)})`);
+      .attr("transform", d => `translate(${xScale(d.Horsepower)+160},${yScale(d.Weight)})`);
     
       //.attr("stroke",d=>colorScale(d.key))
       //.attr("transform", `translate(${190},0)`)
