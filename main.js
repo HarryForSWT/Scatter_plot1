@@ -11,10 +11,11 @@ window.onload = () => {
   
   
   const render = data => {
-    const xValue = d => (d.Horsepower || d.Type=="Sedan");
+    const xValue = d => (d.Horsepower);
     const xAxisLabel = "Horsepower";
     const yValue = d => d.Weight;
     const yAxisLabel = "Weight";
+    const colorValue = d=>d.Type;
     const margin = { top: 5, right: 20, bottom: 20, left: 200 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
@@ -85,13 +86,13 @@ window.onload = () => {
 
     //Daten in Formen visualisieren
     const nested = d3.nest()
-    .key(d=>d.Type)
+    .key(colorValue)
     .entries(data)
     console.log(nested);
     
     svg
       .selectAll("circle")
-      .data(nested)//
+      .data(data)//
       .enter()
       .append("circle")
       .attr('class','circle-color')//
