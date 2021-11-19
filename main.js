@@ -33,6 +33,7 @@ window.onload = () => {
       .range([350, 0])
       .nice();
 
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
     //Objekt "g" mit der generellen Translationseinstelleung
     const g = svg
       .append("g")
@@ -90,17 +91,23 @@ window.onload = () => {
     .entries(data)
     console.log(nested);
     
+    colorScale.domain(nested.map(d => d.key));
+    
     svg
       .selectAll("circle")
-      .data(data)//
+      .data(nested)//
       .enter()
       .append("circle")
       .attr('class','circle-color')//
       .attr("cy", d => yScale(yValue(d)))
       .attr("cx", d => xScale(xValue(d)))
       .attr("r", 7)
+      .attr("stroke",d=>colorScale(d.key))
       .attr("transform", `translate(${190},0)`);
+    
+      console.log(d=>d.value);
   };
+  
 
   // Load the data set from the assets folder:
   //Dateiverbinden
