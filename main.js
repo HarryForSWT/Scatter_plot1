@@ -125,10 +125,7 @@ window.onload = () => {
       d.Len = +d.Len;
       d.AWD = +d.AWD;
       d.Width = +d.Width;
-      if(d.Type=='Sedan'){
-        console.log(true);
-      }
-      
+            
     });
     render(data);
     
