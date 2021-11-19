@@ -105,7 +105,7 @@ window.onload = () => {
       .attr("stroke",d=>colorScale(d.key))
       .attr("transform", `translate(${190},0)`);
     
-      console.log(d=>d.value);
+      
   };
   
 
