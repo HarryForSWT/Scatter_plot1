@@ -106,7 +106,7 @@ window.onload = () => {
 
   var circle = svg
     .append("circle")
-    .attr("cx", 50)
+    .attr("cx", 150)
     .attr("cy", height - 95)
     .attr("r", 6)
     .attr("fill", "steelblue")
@@ -118,19 +118,35 @@ window.onload = () => {
     .append("text")
     .text("AWD=0")
     .attr("y", height - 90)
-    .attr("x", 65);
-  
-  var cross = svg.append("polygon")
-  .attr("points","3.5,0 6.5,0 6.5,3.5 10,3.5 10,6.5 6.5,6.5 6.5,10 3.5,10 3.5,6.5 0,6.5 0,3.5 3.5,3.5")
-  .attr("fill", "steelblue")
+    .attr("x", 165);
+
+  var cross = svg
+    .append("polygon")
+    .attr(
+      "points",
+      "3.5,0 6.5,0 6.5,3.5 10,3.5 10,6.5 6.5,6.5 6.5,10 3.5,10 3.5,6.5 0,6.5 0,3.5 3.5,3.5"
+    )
+    .attr("fill", "transparent")
     .attr("stroke", "steelblue")
     .attr("opacity", 0.5)
     .attr("stroke-width", 1)
-  .attr(
-        "transform",
-        `translate(100,25)`
-      );
-  
+    .attr("transform", `translate(260,${height - 100})`);
+
+  var AWD1 = svg
+    .append("text")
+    .text("AWD=1")
+    .attr("y", height - 90)
+    .attr("x", 276);
+
+  var line1 = svg
+    .append("line")
+    .attr("x1", 145)
+    .attr("y1", height - 70)
+    .attr("x2", 180)
+    .attr("y2", height - 70)
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 4);
+
   // Load the data set from the assets folder:
   //Dateiverbinden
   d3.csv("cars.csv").then(data => {
