@@ -99,7 +99,8 @@ window.onload = () => {
         d3.selectAll("path").style("stroke", "transparent");
         d3.select(this).style("stroke", "black");
         d3.select(this).style("stroke-width", 5);
-        const div3 = d3.selectAll('div').data(data).enter().append('text').text(d =>d.Name);
+        const div3 = 3;
+       console.log(div3);
           
       })
       
