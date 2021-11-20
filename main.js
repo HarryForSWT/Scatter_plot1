@@ -5,17 +5,15 @@ window.onload = () => {
   // YOUR CODE GOES HERE
   console.log("YOUR CODE GOES HERE");
   const svg = d3.select("svg");
-  //svg.style('background-color','#311999');
   const width = +svg.attr("width");
   const height = +svg.attr("height");
-  
-  
+
   const render = data => {
-    const xValue = d => (d.Horsepower);
+    const xValue = d => d.Horsepower;
     const xAxisLabel = "Horsepower";
     const yValue = d => d.Weight;
     const yAxisLabel = "Weight";
-    const colorValue = d=>d.Type;
+    const colorValue = d => d.Type;
     const margin = { top: 5, right: 20, bottom: 20, left: 200 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
@@ -34,10 +32,10 @@ window.onload = () => {
       .nice();
     //3.Dimension: jeder Typ Auto hat jede eigene Farbe
     const color = d3.scaleOrdinal(d3.schemeCategory10);
-    //4.Dimension: AWD je nachdem 1 oder 0 haben die Daten eigene 
+    //4.Dimension: AWD je nachdem 1 oder 0 haben die Daten eigene Form.
     const shape = d3.scaleOrdinal(d3.symbols.map(s => d3.symbol().type(s)()));
-    
-     //Objekt "g" mit der generellen Translationseinstelleung
+
+    //Objekt "g" mit der generellen Translationseinstelleung
     const g = svg
       .append("g")
       .attr("tranform", `translate(${margin.left},${margin.top})`);
@@ -66,9 +64,8 @@ window.onload = () => {
       .text(yAxisLabel)
       .attr("text-anchor", "middle")
       .attr("transform", `rotate(-90)`);
-    //yAchse verschwinden 
+    //yAchse verschwinden
     yAxisG.selectAll(" .domain").remove();
-    
 
     //x-Achse Zeichnen
     const xAxisG = g
@@ -78,8 +75,8 @@ window.onload = () => {
         "transform",
         `translate(${innerWidth / 9 + 86},${innerHeight - 125})`
       );
-    
-     //xAchse verschwinden 
+
+    //xAchse verschwinden
     xAxisG.selectAll(" .domain").remove();
     xAxisG
       .append("text")
@@ -88,48 +85,43 @@ window.onload = () => {
       .attr("x", innerWidth / 2)
       .text(xAxisLabel);
 
-    //Daten in Formen visualisieren
-    const nested = d3.nest()
-    .key(colorValue)
-    .entries(data)
-    console.log(nested);
-    
-   // colorScale.domain(nested.map(d => d.key));
-    
     svg
-    
-    /*
-     .selectAll("circle")
+      .selectAll("path")
       .data(data)
-      .enter()
-      .append("circle")
-    
-    .attr("cy", d => yScale(yValue(d)))
-      .attr("cx", d => xScale(xValue(d)))
-      .attr("r", 7)
-   
-    
-   
-    */
-    
-    
-     
-     .selectAll("path")
-    .data(data)
-    .join("path")
+      .join("path")
       .attr("fill", d => color(d.Type))
       .attr("d", d => shape(d.AWD))
       //.attr('class','circle-color')
-      .attr("transform", d => `translate(${xScale(d.Horsepower)+185},${yScale(d.Weight)})`);
-    
-      //.attr("stroke",d=>colorScale(d.key))
-      //.attr("transform", `translate(${190},0)`)
-    ;
-    
-      
+      .attr(
+        "transform",
+        d => `translate(${xScale(d.Horsepower) + 185},${yScale(d.Weight)})`
+      );
   };
-  
 
+  var legend = d3
+    .select("body")
+    .append("svg")
+    .attr("width", 300)
+    .attr("height", 300);
+
+  var circle = legend
+    .append("circle")
+    .attr("cx", 10)
+    .attr("cy", 68)
+    .attr("r", 6)
+    .attr("fill", "steelblue")
+    .attr("stroke", "steelblue")
+    .attr("opacity",0.5)
+    .attr("stroke-width", 2);
+  
+  
+  
+  
+  
+  
+  
+  
+  
   // Load the data set from the assets folder:
   //Dateiverbinden
   d3.csv("cars.csv").then(data => {
@@ -146,9 +138,7 @@ window.onload = () => {
       d.Len = +d.Len;
       d.AWD = +d.AWD;
       d.Width = +d.Width;
-            
     });
     render(data);
-    
   });
 };
