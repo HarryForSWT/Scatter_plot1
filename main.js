@@ -104,48 +104,59 @@ window.onload = () => {
     .attr("width", 1100)
     .attr("height", 300);
 
-  var circle = svg
+  const circle = svg
     .append("circle")
     .attr("cx", 150)
     .attr("cy", height - 95)
     .attr("r", 6)
-    .attr("fill", "steelblue")
-    .attr("stroke", "steelblue")
+    .attr("fill", "transparent")
+    .attr("stroke", "black")
     .attr("opacity", 0.5)
     .attr("stroke-width", 2);
 
-  var AWD0 = svg
+  const AWD0 = svg
     .append("text")
     .text("AWD=0")
     .attr("y", height - 90)
     .attr("x", 165);
+  
 
-  var cross = svg
+  const cross = svg
     .append("polygon")
     .attr(
       "points",
       "3.5,0 6.5,0 6.5,3.5 10,3.5 10,6.5 6.5,6.5 6.5,10 3.5,10 3.5,6.5 0,6.5 0,3.5 3.5,3.5"
     )
     .attr("fill", "transparent")
-    .attr("stroke", "steelblue")
+    .attr("stroke", "black")
     .attr("opacity", 0.5)
     .attr("stroke-width", 1)
-    .attr("transform", `translate(260,${height - 100})`);
+    .attr("transform", `translate(259,${height - 102}) scale(1.25)`);
 
-  var AWD1 = svg
+  const AWD1 = svg
     .append("text")
     .text("AWD=1")
     .attr("y", height - 90)
-    .attr("x", 276);
+    .attr("x", 279);
 
-  var line1 = svg
+  const line1 = svg
     .append("line")
     .attr("x1", 145)
     .attr("y1", height - 70)
     .attr("x2", 180)
     .attr("y2", height - 70)
-    .attr("stroke", "steelblue")
+    .attr("stroke", "#1f77b4")
     .attr("stroke-width", 4);
+  
+  const line2 = svg
+    .append("line")
+    .attr("x1", 355)
+    .attr("y1", height - 70)
+    .attr("x2", 400)
+    .attr("y2", height - 70)
+    .attr("stroke", "#2ca02c")
+    .attr("stroke-width", 4);
+  
 
   // Load the data set from the assets folder:
   //Dateiverbinden
