@@ -90,7 +90,10 @@ window.onload = () => {
       .data(data)
       .join("path")
       .on("click", function(event) {
+        d3.selectAll("path").style("stroke", "transparent");
         d3.select(this).style("stroke", "black");
+        d3.select(this).style("stroke-width", 5);
+        
       })
       .attr("fill", d => color(d.Type))
       .attr("d", d => shape(d.AWD))
