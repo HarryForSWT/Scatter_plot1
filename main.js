@@ -13,7 +13,7 @@ window.onload = () => {
     const xAxisLabel = "Horsepower";
     const yValue = d => d.Weight;
     const yAxisLabel = "Weight";
-    const nameValue = d => d.Type;
+    const nameValue = d => d.Name;
     const colorValue = d => d.Type;
     const margin = { top: 5, right: 20, bottom: 20, left: 200 };
     const innerWidth = width - margin.left - margin.right;
@@ -33,8 +33,7 @@ window.onload = () => {
       .nice();
     const nameScale = d3.scaleBand().domain(data.map(nameValue));
     console.log(nameScale.domain());
-    
-    
+
     //3.Dimension: jeder Typ Auto hat jede eigene Farbe
     const color = d3.scaleOrdinal(d3.schemeCategory10);
     //4.Dimension: AWD je nachdem 1 oder 0 haben die Daten eigene Form.
@@ -88,25 +87,28 @@ window.onload = () => {
       .attr("class", "axis-label")
       .attr("y", 60)
       .attr("x", innerWidth / 2)
-      .text(xAxisLabel)
-    ;
+      .text(xAxisLabel);
 
     svg
       .selectAll("path")
       .data(data)
       .join("path")
+
+      .attr("name", nameValue)
+      .attr("weight", yValue)
+      .attr("horsepower", xValue)
+      .attr("AWD", d => d.AWD)
+      .attr("RWD", d => d.RWD)
+      .attr("Type", d => d.Type)
+      .attr("fill", d => color(d.Type))
+      .attr("d", d => shape(d.AWD))
       .on("click", function(event) {
         d3.selectAll("path").style("stroke", "transparent");
         d3.select(this).style("stroke", "black");
         d3.select(this).style("stroke-width", 5);
-        const div3 = 3;
-       console.log(div3);
-          
+        
+        console.log(this);
       })
-      
-      .attr("fill", d => color(d.Type))
-      .attr("d", d => shape(d.AWD))
-      //.attr('class','circle-color')
       .attr(
         "transform",
         d => `translate(${xScale(d.Horsepower) + 185},${yScale(d.Weight)})`
