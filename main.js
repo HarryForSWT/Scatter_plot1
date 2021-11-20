@@ -105,14 +105,13 @@ window.onload = () => {
         d3.select(this).style("stroke-width", 5);
 
         var harry = this.getAttributeNode("name").value;
-        document.getElementById("tab").innerHTML = harry;
-        //svg.append('text').text(harry).attr("y", height - 25).attr("x", 65);
-
-        var table = d3.select("body").append("table");
-        var thead = table.append("thead");
-        var tbody = table.append("tbody");
+        document.getElementById("tab").innerHTML = "Name: " + harry;
+        let table = document.querySelector("#table");
+        let thead = document.querySelector("#thead");
+        let tbody = document.querySelector("#tbody");
+      
         
-        
+      
       })
       .attr(
         "transform",
