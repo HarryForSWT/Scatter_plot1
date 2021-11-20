@@ -3,7 +3,7 @@ var d3; // Minor workaround to avoid error messages in editors
 // Waiting until document has loaded
 window.onload = () => {
   // YOUR CODE GOES HERE
-    console.log("YOUR CODE GOES HERE");
+  console.log("YOUR CODE GOES HERE");
   const svg = d3.select("svg");
   const width = +svg.attr("width");
   const height = +svg.attr("height");
@@ -98,7 +98,6 @@ window.onload = () => {
       );
   };
 
-  
   svg
     .select("body")
     .append("svg")
@@ -108,14 +107,25 @@ window.onload = () => {
   var circle = svg
     .append("circle")
     .attr("cx", 50)
-    .attr("cy", 425)
+    .attr("cy", height - 95)
     .attr("r", 6)
     .attr("fill", "steelblue")
     .attr("stroke", "steelblue")
-    .attr("opacity",0.5)
+    .attr("opacity", 0.5)
     .attr("stroke-width", 2);
+
+  var AWD0 = svg
+    .append("text")
+    .text("AWD=0")
+    .attr("y", height - 90)
+    .attr("x", 65);
   
-  var AWD0 = svg.append("text")
+  var cross = svg.append("polygon")
+  .attr("points","2,0 4,0 4,2")
+  .attr("fill", "transparent")
+    .attr("stroke", "black")
+    .attr("stroke-width", 1)
+  .;
   
   // Load the data set from the assets folder:
   //Dateiverbinden
