@@ -14,7 +14,6 @@ window.onload = () => {
     const yValue = d => d.Weight;
     const yAxisLabel = "Weight";
     const nameValue = d => d.Name;
-    const colorValue = d => d.Type;
     const margin = { top: 5, right: 20, bottom: 20, left: 200 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
@@ -31,8 +30,6 @@ window.onload = () => {
       .domain(d3.extent(data, yValue))
       .range([350, 0])
       .nice();
-    const nameScale = d3.scaleBand().domain(data.map(nameValue));
-    console.log(nameScale.domain());
 
     //3.Dimension: jeder Typ Auto hat jede eigene Farbe
     const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -103,14 +100,19 @@ window.onload = () => {
       .attr("fill", d => color(d.Type))
       .attr("d", d => shape(d.AWD))
       .on("click", function(event) {
-      
         d3.selectAll("path").style("stroke", "transparent");
         d3.select(this).style("stroke", "black");
         d3.select(this).style("stroke-width", 5);
-        
+
         var harry = this.getAttributeNode("name").value;
         document.getElementById("tab").innerHTML = harry;
         //svg.append('text').text(harry).attr("y", height - 25).attr("x", 65);
+
+        var table = d3.select("body").append("table");
+        var thead = table.append("thead");
+        var tbody = table.append("tbody");
+        
+        
       })
       .attr(
         "transform",
