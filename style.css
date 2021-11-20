@@ -8,7 +8,6 @@ path{
 
 
 h2{
-  
   margin-bottom:3em;
 }
 text{
@@ -31,5 +30,23 @@ text{
   fill:#8E8883;
 }
 
+
+footer {
+	border-top: 1px solid #6bc32d;
+	color: #666;
+	font-size: .9em;
+	margin-top: 5em;
+	padding: 1em 0;
+}
+	/*Linke Seite des Footers*/
+footer >div.container > .right {
+	float: right;
+	text-align: right;
+}
+	/*Rechte Seite des Footers*/
+footer >div.container > .left {
+	float: left;
+	width: 40%;
+}
 
 /* YOUR CSS CODE GOES HERE */

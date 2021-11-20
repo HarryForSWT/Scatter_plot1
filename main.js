@@ -104,6 +104,13 @@ window.onload = () => {
     .attr("width", 1100)
     .attr("height", 300);
 
+  const legend = svg
+    .append("text")
+    .text("Legend:")
+    .attr("y", height - 75)
+    .attr("x", 45)
+    .attr("font-size","25");
+  
   const circle = svg
     .append("circle")
     .attr("cx", 150)
@@ -147,7 +154,6 @@ window.onload = () => {
     .attr("y2", height - 70)
     .attr("stroke", "#1f77b4")
     .attr("stroke-width", 4);
-  
   const sedan = svg
     .append("text")
     .text("Sedan")
@@ -162,12 +168,12 @@ window.onload = () => {
     .attr("y2", height - 70)
     .attr("stroke", "#2ca02c")
     .attr("stroke-width", 4);
-  
   const SportsCar = svg
     .append("text")
     .text("Sports Car")
     .attr("y", height - 65)
     .attr("x", 287);
+  
   const line3 = svg
     .append("line")
     .attr("x1", 400)
@@ -184,21 +190,32 @@ window.onload = () => {
   
   const line4 = svg
     .append("line")
-    .attr("x1", 511)
+    .attr("x1", 525)
     .attr("y1", height - 70)
-    .attr("x2", 512)
+    .attr("x2", 550)
     .attr("y2", height - 70)
     .attr("stroke", "#ff7f0e")
     .attr("stroke-width", 4);
+  const suv = svg
+    .append("text")
+    .text("SUV")
+    .attr("y", height - 65)
+    .attr("x", 553);
+  
   
   const line5 = svg
     .append("line")
-    .attr("x1", 601)
+    .attr("x1", 625)
     .attr("y1", height - 70)
-    .attr("x2", 626)
+    .attr("x2", 650)
     .attr("y2", height - 70)
     .attr("stroke", "#d62728")
     .attr("stroke-width", 4);
+  const wagon = svg
+    .append("text")
+    .text("Wagon")
+    .attr("y", height - 65)
+    .attr("x", 653);
 
   // Load the data set from the assets folder:
   //Dateiverbinden
