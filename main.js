@@ -3,7 +3,7 @@ var d3; // Minor workaround to avoid error messages in editors
 // Waiting until document has loaded
 window.onload = () => {
   // YOUR CODE GOES HERE
-  console.log("YOUR CODE GOES HERE");
+    console.log("YOUR CODE GOES HERE");
   const svg = d3.select("svg");
   const width = +svg.attr("width");
   const height = +svg.attr("height");
@@ -98,29 +98,24 @@ window.onload = () => {
       );
   };
 
-  var legend = d3
+  
+  svg
     .select("body")
     .append("svg")
-    .attr("width", 300)
+    .attr("width", 1100)
     .attr("height", 300);
 
-  var circle = legend
+  var circle = svg
     .append("circle")
-    .attr("cx", 10)
-    .attr("cy", 68)
+    .attr("cx", 50)
+    .attr("cy", 425)
     .attr("r", 6)
     .attr("fill", "steelblue")
     .attr("stroke", "steelblue")
     .attr("opacity",0.5)
     .attr("stroke-width", 2);
   
-  
-  
-  
-  
-  
-  
-  
+  var AWD0 = svg.append("text")
   
   // Load the data set from the assets folder:
   //Dateiverbinden
