@@ -120,7 +120,7 @@ window.onload = () => {
       .attr("fill", d => color(d.Type))
       .attr("d", d => shape(d.AWD))
       //.attr('class','circle-color')
-      .attr("transform", d => `translate(${xScale(d.Horsepower)+160},${yScale(d.Weight)})`);
+      .attr("transform", d => `translate(${xScale(d.Horsepower)+185},${yScale(d.Weight)})`);
     
       //.attr("stroke",d=>colorScale(d.key))
       //.attr("transform", `translate(${190},0)`)
