@@ -32,12 +32,12 @@ window.onload = () => {
       .domain(d3.extent(data, yValue))
       .range([350, 0])
       .nice();
-
-    //const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-    //Objekt "g" mit der generellen Translationseinstelleung
+    //3.Dimension: jeder Typ Auto hat jede eigene Farbe
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
+    //4.Dimension: AWD je nachdem 1 oder 0 haben die Daten eigene 
+    const shape = d3.scaleOrdinal(d3.symbols.map(s => d3.symbol().type(s)()));
     
-    const color = d3.scaleOrdinal(data.map(d => d.Type), d3.schemeCategory10);
-    const shape = d3.scaleOrdinal(data.map(d => d.Type), d3.symbols.map(s => d3.symbol().type(s)()));
+     //Objekt "g" mit der generellen Translationseinstelleung
     const g = svg
       .append("g")
       .attr("tranform", `translate(${margin.left},${margin.top})`);
