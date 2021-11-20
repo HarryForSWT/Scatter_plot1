@@ -103,11 +103,14 @@ window.onload = () => {
       .attr("fill", d => color(d.Type))
       .attr("d", d => shape(d.AWD))
       .on("click", function(event) {
+      
         d3.selectAll("path").style("stroke", "transparent");
         d3.select(this).style("stroke", "black");
         d3.select(this).style("stroke-width", 5);
         
-        console.log(this);
+        var harry = this.getAttributeNode("name").value;
+        document.getElementById("tab").innerHTML = harry;
+        //svg.append('text').text(harry).attr("y", height - 25).attr("x", 65);
       })
       .attr(
         "transform",
