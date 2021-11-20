@@ -121,11 +121,15 @@ window.onload = () => {
     .attr("x", 65);
   
   var cross = svg.append("polygon")
-  .attr("points","2,0 4,0 4,2")
-  .attr("fill", "transparent")
-    .attr("stroke", "black")
+  .attr("points","3.5,0 6.5,0 6.5,3.5 10,3.5 10,6.5 6.5,6.5 6.5,10 3.5,10 3.5,6.5 0,6.5 0,3.5 3.5,3.5")
+  .attr("fill", "steelblue")
+    .attr("stroke", "steelblue")
+    .attr("opacity", 0.5)
     .attr("stroke-width", 1)
-  .;
+  .attr(
+        "transform",
+        `translate(100,25)`
+      );
   
   // Load the data set from the assets folder:
   //Dateiverbinden
