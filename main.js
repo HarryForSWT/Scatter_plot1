@@ -99,14 +99,10 @@ window.onload = () => {
         d3.selectAll("path").style("stroke", "transparent");
         d3.select(this).style("stroke", "black");
         d3.select(this).style("stroke-width", 5);
-        d3.select(this).
-        svg
-          .append("text")
-          .text(this.Name)
-          .attr("y", height - 50)
-          .attr("x", 279);
+        const div3 = d3.selectAll('div').data(data).enter().append('text').text(d =>d.Name);
           
       })
+      
       .attr("fill", d => color(d.Type))
       .attr("d", d => shape(d.AWD))
       //.attr('class','circle-color')
