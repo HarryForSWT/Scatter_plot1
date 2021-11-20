@@ -89,6 +89,9 @@ window.onload = () => {
       .selectAll("path")
       .data(data)
       .join("path")
+      .on("click", function(event) {
+        d3.select(this).style("stroke", "black");
+      })
       .attr("fill", d => color(d.Type))
       .attr("d", d => shape(d.AWD))
       //.attr('class','circle-color')
@@ -109,8 +112,8 @@ window.onload = () => {
     .text("Legend:")
     .attr("y", height - 75)
     .attr("x", 45)
-    .attr("font-size","25");
-  
+    .attr("font-size", "25");
+
   const circle = svg
     .append("circle")
     .attr("cx", 150)
@@ -126,7 +129,6 @@ window.onload = () => {
     .text("AWD=0")
     .attr("y", height - 90)
     .attr("x", 165);
-  
 
   const cross = svg
     .append("polygon")
@@ -159,7 +161,7 @@ window.onload = () => {
     .text("Sedan")
     .attr("y", height - 65)
     .attr("x", 173);
-  
+
   const line2 = svg
     .append("line")
     .attr("x1", 259)
@@ -173,7 +175,7 @@ window.onload = () => {
     .text("Sports Car")
     .attr("y", height - 65)
     .attr("x", 287);
-  
+
   const line3 = svg
     .append("line")
     .attr("x1", 400)
@@ -187,7 +189,7 @@ window.onload = () => {
     .text("Minivan")
     .attr("y", height - 65)
     .attr("x", 428);
-  
+
   const line4 = svg
     .append("line")
     .attr("x1", 525)
@@ -201,8 +203,7 @@ window.onload = () => {
     .text("SUV")
     .attr("y", height - 65)
     .attr("x", 553);
-  
-  
+
   const line5 = svg
     .append("line")
     .attr("x1", 625)
