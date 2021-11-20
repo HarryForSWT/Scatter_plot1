@@ -143,20 +143,62 @@ window.onload = () => {
     .append("line")
     .attr("x1", 145)
     .attr("y1", height - 70)
-    .attr("x2", 180)
+    .attr("x2", 170)
     .attr("y2", height - 70)
     .attr("stroke", "#1f77b4")
     .attr("stroke-width", 4);
   
+  const sedan = svg
+    .append("text")
+    .text("Sedan")
+    .attr("y", height - 65)
+    .attr("x", 173);
+  
   const line2 = svg
     .append("line")
-    .attr("x1", 355)
+    .attr("x1", 259)
     .attr("y1", height - 70)
-    .attr("x2", 400)
+    .attr("x2", 284)
     .attr("y2", height - 70)
     .attr("stroke", "#2ca02c")
     .attr("stroke-width", 4);
   
+  const SportsCar = svg
+    .append("text")
+    .text("Sports Car")
+    .attr("y", height - 65)
+    .attr("x", 287);
+  const line3 = svg
+    .append("line")
+    .attr("x1", 400)
+    .attr("y1", height - 70)
+    .attr("x2", 425)
+    .attr("y2", height - 70)
+    .attr("stroke", "#9467bd")
+    .attr("stroke-width", 4);
+  const miniVan = svg
+    .append("text")
+    .text("Minivan")
+    .attr("y", height - 65)
+    .attr("x", 428);
+  
+  const line4 = svg
+    .append("line")
+    .attr("x1", 511)
+    .attr("y1", height - 70)
+    .attr("x2", 512)
+    .attr("y2", height - 70)
+    .attr("stroke", "#ff7f0e")
+    .attr("stroke-width", 4);
+  
+  const line5 = svg
+    .append("line")
+    .attr("x1", 601)
+    .attr("y1", height - 70)
+    .attr("x2", 626)
+    .attr("y2", height - 70)
+    .attr("stroke", "#d62728")
+    .attr("stroke-width", 4);
 
   // Load the data set from the assets folder:
   //Dateiverbinden
