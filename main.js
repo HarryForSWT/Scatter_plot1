@@ -113,8 +113,8 @@ window.onload = () => {
         var weightValue = this.getAttributeNode("weight").value;
 
         document.getElementById("tab").innerHTML = "Name: " + nameValue;
-        document.getElementById("table").innerHTML = tabulate();
-        function tabulate() {
+        //document.getElementById("table").innerHTML = tabulate();
+       
           
           const KeyArray = [
             "Name",
@@ -136,27 +136,26 @@ window.onload = () => {
           let table = document.querySelector("#table");
           let thead = document.querySelector("#thead");
           let tbody = document.querySelector("#tbody");
-          let theadRow = document.createElement("tr");
+     //     let theadRow = document.createElement("tr");
 
           for (var k = 0; k < 2; k++) {
             let columnItemsSet = document.createElement("th");
 
             if (k == 0) {
-              columnItemsSet.append("g");
-              columnItemsSet.setAttribute("id","a");
+
               document.getElementById("a").innerHTML = "Key";
               
             } else if (k == 1) {
-              columnItemsSet.append("h");
-              columnItemsSet.setAttribute("id","b");
+
               document.getElementById("b").innerHTML = "Value"
               
               //columnItemsSet.append("Value");
             }
 
-            theadRow.append(columnItemsSet);
+            //theadRow.append(columnItemsSet);
           }
-          thead.append(theadRow);
+        //  thead.append(theadRow);
+      /*
           for (var k = 0; k < 6; k++) {
             let tr = document.createElement("tr");
             for (var j = 0; j < 2; j++) {
@@ -172,11 +171,11 @@ window.onload = () => {
             }
             tbody.append(tr);
           }
-          table.push(thead,tbody);
-          return table;
+     
+          */
+     for (var k = 0; k < 6; k++)
           
-          
-        }
+        
       })
 
       .attr(
