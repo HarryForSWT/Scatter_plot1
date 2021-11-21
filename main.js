@@ -142,9 +142,16 @@ window.onload = () => {
             let columnItemsSet = document.createElement("th");
 
             if (k == 0) {
-              columnItemsSet.append("Key");
+              columnItemsSet.append("g");
+              columnItemsSet.setAttribute("id","a");
+              document.getElementById("a").innerHTML = "Key";
+              
             } else if (k == 1) {
-              columnItemsSet.append("Value");
+              columnItemsSet.append("h");
+              columnItemsSet.setAttribute("id","b");
+              document.getElementById("b").innerHTML = "Value"
+              
+              //columnItemsSet.append("Value");
             }
 
             theadRow.append(columnItemsSet);
@@ -155,9 +162,10 @@ window.onload = () => {
             for (var j = 0; j < 2; j++) {
               let td = document.createElement("td");
               if (j == 0) {
-                td.setAttribute
+                td.setAttribute("id",(k+1)*(j+1));
                 td.append(KeyArray[k]);
               } else {
+                td.setAttribute("id",(k+1)+6);
                 td.append(valueArray[k]);
               }
               tr.append(td);
