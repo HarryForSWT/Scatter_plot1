@@ -3,6 +3,7 @@ var d3; // Minor workaround to avoid error messages in editors
 // Waiting until document has loaded
 window.onload = () => {
   // YOUR CODE GOES HERE
+  const dataarray = ["Name", "Type", "AWD", "RWD", "Horsepower", "Weight"];
   console.log("YOUR CODE GOES HERE");
   const svg = d3.select("svg");
   const width = +svg.attr("width");
@@ -109,10 +110,34 @@ window.onload = () => {
         let table = document.querySelector("#table");
         let thead = document.querySelector("#thead");
         let tbody = document.querySelector("#tbody");
-      
-        
-      
+        let theadRow = document.createElement("tr");
+        for (var k = 0; k < 2; k++) {
+          let columnItemsSet = document.createElement("th");
+
+          if (k == 0) {
+            columnItemsSet.append("Key");
+          } else if (k == 1) {
+            columnItemsSet.append("Value");
+          }
+
+          theadRow.append(columnItemsSet);
+        }
+        thead.append(theadRow);
+        for (var k = 0; k < 6; k++) {
+          let tr = document.createElement("tr");
+          for (var j = 0; j < 2; j++) {
+            let td = document.createElement("td");
+            if(j==0){
+              td.append(dataarray[k]);
+            }else{
+              td.append(available_data[m][j]);
+            }
+            
+            tr.append(td);
+          }
+        }
       })
+
       .attr(
         "transform",
         d => `translate(${xScale(d.Horsepower) + 185},${yScale(d.Weight)})`
