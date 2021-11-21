@@ -3,7 +3,7 @@ var d3; // Minor workaround to avoid error messages in editors
 // Waiting until document has loaded
 window.onload = () => {
   // YOUR CODE GOES HERE
-  const dataarray = ["Name", "Type", "AWD", "RWD", "Horsepower", "Weight"];
+
   console.log("YOUR CODE GOES HERE");
   const svg = d3.select("svg");
   const width = +svg.attr("width");
@@ -97,7 +97,7 @@ window.onload = () => {
       .attr("horsepower", xValue)
       .attr("AWD", d => d.AWD)
       .attr("RWD", d => d.RWD)
-      .attr("Type", d => d.Type)
+      .attr("type", d => d.Type)
       .attr("fill", d => color(d.Type))
       .attr("d", d => shape(d.AWD))
       .on("click", function(event) {
@@ -105,35 +105,61 @@ window.onload = () => {
         d3.select(this).style("stroke", "black");
         d3.select(this).style("stroke-width", 5);
 
-        var harry = this.getAttributeNode("name").value;
-        document.getElementById("tab").innerHTML = "Name: " + harry;
-        let table = document.querySelector("#table");
-        let thead = document.querySelector("#thead");
-        let tbody = document.querySelector("#tbody");
-        let theadRow = document.createElement("tr");
-        for (var k = 0; k < 2; k++) {
-          let columnItemsSet = document.createElement("th");
+        var nameValue = this.getAttributeNode("name").value;
+        var typeValue = this.getAttributeNode("type").value;
+        var awdValue = this.getAttributeNode("AWD").value;
+        var rwdValue = this.getAttributeNode("RWD").value;
+        var horsePowerValue = this.getAttributeNode("horsepower").value;
+        var weightValue = this.getAttributeNode("weight").value;
 
-          if (k == 0) {
-            columnItemsSet.append("Key");
-          } else if (k == 1) {
-            columnItemsSet.append("Value");
-          }
+        document.getElementById("tab").innerHTML = "Name: " + nameValue;
+        function tabulate() {
+          const KeyArray = [
+            "Name",
+            "Type",
+            "AWD",
+            "RWD",
+            "Horsepower",
+            "Weight"
+          ];
+          const valueArray = [
+            nameValue,
+            typeValue,
+            awdValue,
+            rwdValue,
+            horsePowerValue,
+            weightValue
+          ];
 
-          theadRow.append(columnItemsSet);
-        }
-        thead.append(theadRow);
-        for (var k = 0; k < 6; k++) {
-          let tr = document.createElement("tr");
-          for (var j = 0; j < 2; j++) {
-            let td = document.createElement("td");
-            if(j==0){
-              td.append(dataarray[k]);
-            }else{
-              td.append(available_data[m][j]);
+          let table = document.querySelector("#table");
+          let thead = document.querySelector("#thead");
+          let tbody = document.querySelector("#tbody");
+          let theadRow = document.createElement("tr");
+
+          for (var k = 0; k < 2; k++) {
+            let columnItemsSet = document.createElement("th");
+
+            if (k == 0) {
+              columnItemsSet.append("Key");
+            } else if (k == 1) {
+              columnItemsSet.append("Value");
             }
-            
-            tr.append(td);
+
+            theadRow.append(columnItemsSet);
+          }
+          thead.append(theadRow);
+          for (var k = 0; k < 6; k++) {
+            let tr = document.createElement("tr");
+            for (var j = 0; j < 2; j++) {
+              let td = document.createElement("td");
+              if (j == 0) {
+                td.append(KeyArray[k]);
+              } else {
+                td.append(valueArray[k]);
+              }
+              tr.append(td);
+            }
+            tbody.append(tr);
           }
         }
       })
