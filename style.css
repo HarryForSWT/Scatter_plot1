@@ -29,7 +29,19 @@ text{
   font-size: 3em;
   fill:#8E8883;
 }
+table{
+	text-align: right;
+  background: steelblue;
 
+}
+
+th{
+  
+  border-bottom: 3px solid #ddd;
+}
+td{
+   border: 1px solid rgba(255,255,255,0.3);
+}
 
 footer {
 	border-top: 1px solid #6bc32d;

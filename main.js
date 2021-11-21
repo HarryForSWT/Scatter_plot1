@@ -112,9 +112,6 @@ window.onload = () => {
         var horsePowerValue = this.getAttributeNode("horsepower").value;
         var weightValue = this.getAttributeNode("weight").value;
 
-        document.getElementById("tab").innerHTML = "Name: " + nameValue;
-        //document.getElementById("table").innerHTML = tabulate();
-       
           
           const KeyArray = [
             "Name",
@@ -136,7 +133,7 @@ window.onload = () => {
           let table = document.querySelector("#table");
           let thead = document.querySelector("#thead");
           let tbody = document.querySelector("#tbody");
-     //     let theadRow = document.createElement("tr");
+
 
           for (var k = 0; k < 2; k++) {
             let columnItemsSet = document.createElement("th");
@@ -149,30 +146,12 @@ window.onload = () => {
 
               document.getElementById("b").innerHTML = "Value";
               
-              //columnItemsSet.append("Value");
+    
             }
 
-            //theadRow.append(columnItemsSet);
+ 
           }
-        //  thead.append(theadRow);
-      /*
-          for (var k = 0; k < 6; k++) {
-            let tr = document.createElement("tr");
-            for (var j = 0; j < 2; j++) {
-              let td = document.createElement("td");
-              if (j == 0) {
-                td.setAttribute("id",(k+1)*(j+1));
-                td.append(KeyArray[k]);
-              } else {
-                td.setAttribute("id",(k+1)+6);
-                td.append(valueArray[k]);
-              }
-              tr.append(td);
-            }
-            tbody.append(tr);
-          }
-     
-          */
+
      for (var k = 0; k < 12; k++){
        if(k<6){
          document.getElementById(k).innerHTML = KeyArray[k];
