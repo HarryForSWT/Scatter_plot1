@@ -147,7 +147,7 @@ window.onload = () => {
               
             } else if (k == 1) {
 
-              document.getElementById("b").innerHTML = "Value"
+              document.getElementById("b").innerHTML = "Value";
               
               //columnItemsSet.append("Value");
             }
@@ -173,7 +173,13 @@ window.onload = () => {
           }
      
           */
-     for (var k = 0; k < 6; k++)
+     for (var k = 0; k < 12; k++){
+       if(k<6){
+         document.getElementById(k).innerHTML = KeyArray[k];
+       }else{
+         document.getElementById(k).innerHTML = valueArray[k-6];
+       }
+     }
           
         
       })
