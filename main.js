@@ -113,7 +113,9 @@ window.onload = () => {
         var weightValue = this.getAttributeNode("weight").value;
 
         document.getElementById("tab").innerHTML = "Name: " + nameValue;
+        document.getElementById("table").innerHTML = tabulate();
         function tabulate() {
+          
           const KeyArray = [
             "Name",
             "Type",
@@ -153,6 +155,7 @@ window.onload = () => {
             for (var j = 0; j < 2; j++) {
               let td = document.createElement("td");
               if (j == 0) {
+                td.setAttribute
                 td.append(KeyArray[k]);
               } else {
                 td.append(valueArray[k]);
@@ -161,6 +164,10 @@ window.onload = () => {
             }
             tbody.append(tr);
           }
+          table.push(thead,tbody);
+          return table;
+          
+          
         }
       })
 
